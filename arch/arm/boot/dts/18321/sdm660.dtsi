@@ -310,7 +310,7 @@
 //#ifndef CONFIG_VENDOR_REALME //Fanhong.Kong@PSW.BSP.CHG,add 2017/10/25 for close AB 
 //					fsmgr_flags = "wait,slotselect,verify";
 //#else/*CONFIG_VENDOR_REALME*/
-					fsmgr_flags = "wait,verify";
+					fsmgr_flags = "wait";
 //#endif/*CONFIG_VENDOR_REALME*/
 					status = "ok";
 				};
