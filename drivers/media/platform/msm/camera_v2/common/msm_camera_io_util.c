@@ -1,4 +1,5 @@
-/* Copyright (c) 2011-2014, 2017-2019,The Linux Foundataion. All rights reserved.
+/* Copyright (c) 2011-2014, 2017, 2019 The Linux Foundataion.
+ * All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -370,7 +371,7 @@ int msm_cam_clk_enable(struct device *dev, struct msm_cam_clk_info *clk_info,
 				clk_disable(clk_ptr[i]);
 				clk_unprepare(clk_ptr[i]);
 				clk_put(clk_ptr[i]);
-                                clk_ptr[i] = NULL;
+				clk_ptr[i] = NULL;
 			}
 		}
 	}
@@ -388,7 +389,7 @@ cam_clk_get_err:
 			clk_disable(clk_ptr[i]);
 			clk_unprepare(clk_ptr[i]);
 			clk_put(clk_ptr[i]);
-                        clk_ptr[i] = NULL;
+			clk_ptr[i] = NULL;
 		}
 	}
 	return rc;
