@@ -1599,6 +1599,13 @@ int tcp_v4_rcv(struct sk_buff *skb)
 	 * provided case of th->doff==0 is eliminated.
 	 * So, we defer the checks. */
 
+#ifdef CONFIG_VENDOR_REALME
+    //Wei.Wang@Connectivity.WiFi.Network.internet.1015237, 2017/05/30,
+    //[1015237] avoid sending wrong data to app
+    if(skb->ip_summed==CHECKSUM_COMPLETE && skb->csum_valid == 0)
+        goto csum_error;
+#endif /* CONFIG_VENDOR_REALME */
+
 	if (skb_checksum_init(skb, IPPROTO_TCP, inet_compute_pseudo))
 		goto csum_error;
 

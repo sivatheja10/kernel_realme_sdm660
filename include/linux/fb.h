@@ -163,6 +163,13 @@ struct fb_cursor_user {
 /*      A hardware display blank revert early change occured */
 #define FB_R_EARLY_EVENT_BLANK		0x11
 
+#ifdef CONFIG_VENDOR_REALME
+/* Shengjun.Gou@PSW.MM.Display.LCD.Stability, 2017/06/13
+ * add for tp fingerprint notify
+*/
+#define MSM_DRM_ONSCREENFINGERPRINT_EVENT 0x20
+#endif /*CONFIG_VENDOR_REALME*/
+
 struct fb_event {
 	struct fb_info *info;
 	void *data;

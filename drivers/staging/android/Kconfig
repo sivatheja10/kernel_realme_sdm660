@@ -47,6 +47,11 @@ config ANDROID_LOW_MEMORY_KILLER_AUTODETECT_OOM_ADJ_VALUES
 	  /sys/module/lowmemorykiller/parameters/adj and convert them
 	  to oom_score_adj values.
 
+config OPPO_MEM_MONITOR
+	bool "OPPO Low Memory Monitor Driver"
+	depends on ANDROID_LOW_MEMORY_KILLER
+        default n
+
 config SYNC
 	bool "Synchronization framework"
 	default n
