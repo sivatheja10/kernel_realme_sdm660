@@ -1,6 +1,6 @@
 /************************************************************************************
  ** File: - silead_fp_platform.c
- ** CONFIG_VENDOR_REALME
+ ** VENDOR_EDIT
  ** Copyright (C), 2008-2017, OPPO Mobile Comm Corp., Ltd
  **
  ** Description:

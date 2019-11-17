@@ -1,6 +1,6 @@
 /************************************************************************************
  ** File: - SDM660.LA.1.0\android\kernel\msm-4.4\drivers\input\misc\fpc1020_tee.c
- ** CONFIG_VENDOR_REALME
+ ** VENDOR_EDIT
  ** Copyright (C), 2008-2017, OPPO Mobile Comm Corp., Ltd
  **
  ** Description:
@@ -79,7 +79,7 @@ struct fpc1020_data {
         struct mutex lock;
         bool prepared;
 
-#ifdef CONFIG_VENDOR_REALME
+#ifdef VENDOR_EDIT
         /*ziqing.guo@BasicDrv.Sensor, 2016/01/26, modify for enable/disable irq*/
         int irq_enabled;
 #endif
@@ -180,7 +180,7 @@ found:
         return rc;
 }
 
-#ifdef CONFIG_VENDOR_REALME
+#ifdef VENDOR_EDIT
 /* ziqing.guo@BasicDrv.Sensor, 2016/01/26, modify for enable/disable irq */
 static DEFINE_SPINLOCK(fpc1020_lock);
 
@@ -267,7 +267,7 @@ static ssize_t regulator_enable_set(struct device *dev,
         return rc ? rc : count;
 }
 
-#ifdef CONFIG_VENDOR_REALME
+#ifdef VENDOR_EDIT
 /* ziqing.guo@BasicDrv.Sensor, 2016/01/26, modify for enable/disable irq */
 static ssize_t irq_enable_set(struct device *dev,
                 struct device_attribute *attribute, const char *buffer, size_t count)
@@ -330,7 +330,7 @@ static ssize_t wakelock_enable_set(struct device *dev,
 static DEVICE_ATTR(irq, S_IRUSR | S_IWUSR, irq_get, irq_ack);
 static DEVICE_ATTR(regulator_enable, S_IWUSR, NULL, regulator_enable_set);
 
-#ifdef CONFIG_VENDOR_REALME
+#ifdef VENDOR_EDIT
 /* ziqing.guo@BasicDrv.Sensor, 2016/01/26, modify for enable/disable irq */
 static DEVICE_ATTR(irq_enable, S_IWUSR, irq_enable_get, irq_enable_set);
 #endif
@@ -435,7 +435,7 @@ static int fpc1020_probe(struct platform_device *pdev)
         gpio_set_value(fpc1020->rst_gpio, 1);
         udelay(FPC1020_RESET_HIGH1_US);
 
-        irqf = IRQF_TRIGGER_RISING | IRQF_ONESHOT;
+        irqf = IRQF_TRIGGER_RISING | IRQF_ONESHOT | IRQF_PERF_CRITICAL;;
         mutex_init(&fpc1020->lock);
         rc = devm_request_threaded_irq(dev, gpio_to_irq(fpc1020->irq_gpio),
                         NULL, fpc1020_irq_handler, irqf,
@@ -450,7 +450,7 @@ static int fpc1020_probe(struct platform_device *pdev)
         /* Request that the interrupt should be wakeable */
         /*enable_irq_wake( gpio_to_irq( fpc1020->irq_gpio ) );*/
 
-#ifdef CONFIG_VENDOR_REALME
+#ifdef VENDOR_EDIT
         /*ziqing.guo@BasicDrv.Sensor, 2016/01/26, modify for enable/disable irq*/
         disable_irq_nosync(gpio_to_irq(fpc1020->irq_gpio));
         fpc1020->irq_enabled = 0;
